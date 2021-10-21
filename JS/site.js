@@ -170,8 +170,9 @@ $(document).ready(function () {
 	$('.menu-box ul.home a[rel]').click(function (e) {
 		e.preventDefault();
 		var hashValue = $(this).attr("href");
-		hashValue = hashValue.replace(SITEURL, "");
-		hashValue = hashValue.replace("/", "");
+		hashValue = hashValue.split("#").at(-1);
+		hashValue = "#"+hashValue;
+		console.log(hashValue)
 		$('#nav-icon').removeClass('open');
 		$('.menu-box').removeClass('active');
 		$('html, body').stop().animate({
