@@ -270,6 +270,32 @@ $(document).ready(function () {
 			var mobile = $(this).find('input[name="mobile"]').val();
 			var email = $(this).find('input[name="email"]').val();
 			console.log([name, mobile, email]);
+			if (name == "") {
+				alert('Please enter your name');
+				return;
+			}
+		
+			if (email == "") {
+				alert('Please enter your email id');
+				return;
+			} else {
+				if (!ValidateEmail(email)) {
+					alert('Please enter a valid email id');
+					return;
+				}
+		
+			}
+			if (mobile == "") {
+				alert('Please enter your valid mobile number');
+				return;
+			} else {
+				const regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+				if (!regex.test(mobile)) {
+					alert('Please enter your valid 10 digit mobile number');
+					return;
+				}
+			}
+		
 			var currentUrl = window.location.href;
 			var srd = queryParameter('srd', currentUrl);
 			if (!srd) srd = '7015g0000004xRS';
@@ -280,7 +306,7 @@ $(document).ready(function () {
 				"name": name,
 				"mobile": mobile,
 				"email": email,
-				"url": currentUrl,
+				"url": currentUrlurl.substring(0,255),
 				"did": srd,
 				"UTMSource": utm_source,
 				"UTMmedium": utm_medium,
@@ -321,6 +347,32 @@ $(document).ready(function () {
 			var mobile = $(this).find('input[name="mobile"]').val();
 			var email = $(this).find('input[name="email"]').val();
 			console.log([name, mobile, email]);
+			if (name == "") {
+				alert('Please enter your name');
+				return;
+			}
+		
+			if (email == "") {
+				alert('Please enter your email id');
+				return;
+			} else {
+				if (!ValidateEmail(email)) {
+					alert('Please enter a valid email id');
+					return;
+				}
+		
+			}
+			if (mobile == "") {
+				alert('Please enter your valid mobile number');
+				return;
+			} else {
+				const regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+				if (!regex.test(mobile)) {
+					alert('Please enter your valid 10 digit mobile number');
+					return;
+				}
+			}
+		
 			var currentUrl = window.location.href;
 			var srd = queryParameter('srd', currentUrl);
 			if (!srd) srd = '7015g0000004xKA';
@@ -331,7 +383,7 @@ $(document).ready(function () {
 				"name": name,
 				"mobile": mobile,
 				"email": email,
-				"url": currentUrl,
+				"url": currentUrlurl.substring(0,255),
 				"did": srd,
 				"UTMSource": utm_source,
 				"UTMmedium": utm_medium,
@@ -460,6 +512,14 @@ function slickInitial() {
 			  }
 		  });
 	 }  */
+}
+
+function ValidateEmail(mail) {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
+        return (true)
+    }
+    // alert("You have entered an invalid email address!")
+    return (false)
 }
 
 function queryParameter(name, url) {
